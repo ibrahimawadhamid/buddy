@@ -1,7 +1,14 @@
 {
   "name": "buddy",
-  "version": "0.0.1",
+  "description": "Ionic and React starter app",
+  "version": "0.1.0",
   "private": true,
+  "author": "Ibrahim Awad <ibrahim.a.hamidw@gmail.com> (https://www.linkedin.com/in/ibrahimhamid/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/ibrahimawadhamid/buddy.git"
+  },
   "dependencies": {
     "@capacitor/core": "2.0.1",
     "@ionic/react": "^5.0.7",
@@ -46,6 +53,5 @@
   },
   "devDependencies": {
     "@capacitor/cli": "2.0.1"
-  },
-  "description": "An Ionic project"
+  }
 }
