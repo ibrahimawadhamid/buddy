@@ -9,6 +9,7 @@ import {
   IonButton,
   IonItem,
 } from "@ionic/react";
+import { useTranslation } from "react-i18next";
 
 import "./LatestNews.css";
 
@@ -24,6 +25,7 @@ const slideOpts = {
 };
 
 const LatestNews: React.FC = () => {
+  const { t } = useTranslation();
   const currentNews = [
     {
       id: "news-1",
@@ -49,9 +51,9 @@ const LatestNews: React.FC = () => {
       <IonRow>
         <IonCol>
           <IonItem>
-            <IonLabel slot="start">Latest News</IonLabel>
+            <IonLabel slot="start">{t("Latest News")}</IonLabel>
             <IonButton slot="end" fill="outline" size="small" href="/page/news">
-              More
+              {t("More")}
             </IonButton>
           </IonItem>
         </IonCol>

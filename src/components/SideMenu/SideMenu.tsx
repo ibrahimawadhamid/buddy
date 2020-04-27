@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import {
   IonContent,
   IonIcon,
@@ -9,8 +10,6 @@ import {
   IonNote,
   IonAvatar,
 } from "@ionic/react";
-
-import React from "react";
 import { useLocation } from "react-router-dom";
 import {
   home,
@@ -20,8 +19,10 @@ import {
   settings,
   settingsSharp,
 } from "ionicons/icons";
-import "./SideMenu.css";
+import { useTranslation } from "react-i18next";
 
+import GeneralContext from "../../context/GeneralContext";
+import "./SideMenu.css";
 import AvatarImage from "../../assets/images/people/person-1.jpg";
 
 interface AppPage {
@@ -56,10 +57,14 @@ const extraPages: AppPage[] = [
 ];
 
 const Menu: React.FC = () => {
+  const { t } = useTranslation();
+  const { settings } = useContext(GeneralContext);
   const location = useLocation();
 
+  const menuOpenSide = settings.languageDirection === "ltr" ? "start" : "end";
+
   return (
-    <IonMenu contentId="main" type="overlay">
+    <IonMenu contentId="main" type="overlay" side={menuOpenSide}>
       <IonContent>
         <IonItem button href="/page/profile">
           <IonAvatar slot="start" className="user-thumbnail">
@@ -71,8 +76,6 @@ const Menu: React.FC = () => {
           </IonLabel>
         </IonItem>
         <IonList id="core-pages-list">
-          {/* <IonListHeader>Buddy</IonListHeader>
-          <IonNote>hello, I'm your buddy</IonNote> */}
           {corePages.map((appPage, index) => {
             return (
               <IonMenuToggle key={"core-page-" + index} autoHide={false}>
@@ -86,7 +89,7 @@ const Menu: React.FC = () => {
                   detail={false}
                 >
                   <IonIcon slot="start" icon={appPage.iosIcon} />
-                  <IonLabel>{appPage.title}</IonLabel>
+                  <IonLabel>{t(appPage.title)}</IonLabel>
                 </IonItem>
               </IonMenuToggle>
             );
@@ -106,14 +109,14 @@ const Menu: React.FC = () => {
                   detail={false}
                 >
                   <IonIcon slot="start" icon={appPage.iosIcon} />
-                  <IonLabel>{appPage.title}</IonLabel>
+                  <IonLabel>{t(appPage.title)}</IonLabel>
                 </IonItem>
               </IonMenuToggle>
             );
           })}
         </IonList>
       </IonContent>
-      <IonNote>version: 0.1.0</IonNote>
+      <IonNote className="ion-margin-start">{t("version") + ": 0.1.0"}</IonNote>
     </IonMenu>
   );
 };

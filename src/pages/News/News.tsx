@@ -16,12 +16,14 @@ import {
   IonCardTitle,
   IonCardContent,
 } from "@ionic/react";
+import { useTranslation } from "react-i18next";
 
 import SampleImage1 from "../../assets/images/samples/sample-1.jpg";
 import SampleImage2 from "../../assets/images/samples/sample-2.jpg";
 import SampleImage3 from "../../assets/images/samples/sample-3.jpg";
 
 const News: React.FC = () => {
+  const { t } = useTranslation();
   const currentNews = [
     {
       id: "news-1",
@@ -49,7 +51,7 @@ const News: React.FC = () => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/page/home" />
           </IonButtons>
-          <IonTitle>News</IonTitle>
+          <IonTitle>{t("News")}</IonTitle>
         </IonToolbar>
       </IonHeader>
 

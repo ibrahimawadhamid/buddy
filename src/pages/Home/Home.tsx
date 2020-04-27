@@ -11,9 +11,12 @@ import {
   IonRow,
   IonCol,
 } from "@ionic/react";
+import { useTranslation } from "react-i18next";
 import LatestNews from "../../components/LatestNews";
 
 const Home: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <IonPage>
       <IonHeader>
@@ -21,7 +24,7 @@ const Home: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Home</IonTitle>
+          <IonTitle>{t("Home")}</IonTitle>
         </IonToolbar>
       </IonHeader>
 

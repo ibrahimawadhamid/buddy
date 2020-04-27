@@ -14,10 +14,12 @@ import {
   IonAvatar,
   IonLabel,
 } from "@ionic/react";
+import { useTranslation } from "react-i18next";
 
 import Logo from "../../assets/images/logo/icon-64.png";
 
 const About: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <IonPage>
       <IonHeader>
@@ -25,7 +27,7 @@ const About: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>About</IonTitle>
+          <IonTitle>{t("About")}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -44,7 +46,7 @@ const About: React.FC = () => {
                 <IonLabel>
                   <h1>Buddy</h1>
                   <p>Ionic and React starter app</p>
-                  <p>Version: 0.1.0</p>
+                  <p>version: 0.1.0</p>
                 </IonLabel>
               </IonItem>
             </IonCol>

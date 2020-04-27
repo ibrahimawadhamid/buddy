@@ -1,12 +1,18 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Plugins } from "@capacitor/core";
 
-import GeneralContext, { Settings, defaultSettings } from "./GeneralContext";
+import GeneralContext, {
+  Settings,
+  defaultSettings,
+  availableLanguages,
+} from "./GeneralContext";
+
+import i18n from "../i18n";
 
 const { Storage } = Plugins;
 
 const GeneralContextProvider: React.FC = (props) => {
-  const [settings, setSettings] = useState<Settings>({ darkMode: false });
+  const [settings, setSettings] = useState<Settings>(defaultSettings);
 
   // Save to disk whenever there is a change
   useEffect(() => {
@@ -24,22 +30,34 @@ const GeneralContextProvider: React.FC = (props) => {
       : defaultSettings;
     setSettings(storedSettings);
     setDarkMode(storedSettings.darkMode);
+    setLanguage(storedSettings.language);
   }, []);
 
-  // Save new settings from settings page
-  const saveSettings = (updatedSettings: Settings | {}) => {
+  const setDarkMode = (darkMode: boolean) => {
+    document.body.classList.toggle("dark", darkMode);
+    const updatedSettings = { darkMode: darkMode };
     setSettings((currentSettings) => {
       return { ...currentSettings, ...updatedSettings };
     });
   };
 
-  const setDarkMode = (darkMode: boolean) => {
-    document.body.classList.toggle("dark", darkMode);
+  const setLanguage = (language: availableLanguages) => {
+    i18n.changeLanguage(language);
+    const languageDirection = i18n.dir(language);
+    const updatedSettings = { language: language, languageDirection };
+    setSettings((currentSettings) => {
+      return { ...currentSettings, ...updatedSettings };
+    });
   };
 
   return (
     <GeneralContext.Provider
-      value={{ settings, initializeContext, saveSettings, setDarkMode }}
+      value={{
+        settings,
+        initializeContext,
+        setDarkMode,
+        setLanguage,
+      }}
     >
       {props.children}
     </GeneralContext.Provider>

@@ -37,14 +37,14 @@ const News = React.lazy(() => import("./pages/News"));
 const Settings = React.lazy(() => import("./pages/Settings"));
 
 const App: React.FC = () => {
-  const { initializeContext } = useContext(GeneralContext);
+  const { initializeContext, settings } = useContext(GeneralContext);
 
   useEffect(() => {
     initializeContext();
   }, [initializeContext]);
 
   return (
-    <IonApp>
+    <IonApp dir={settings.languageDirection}>
       <IonReactRouter>
         <Suspense fallback={<IonSpinner />}>
           <IonSplitPane contentId="main">

@@ -14,10 +14,12 @@ import {
   IonLabel,
   IonBackButton,
 } from "@ionic/react";
+import { useTranslation } from "react-i18next";
 
 import AvatarImage from "../../assets/images/people/person-1.jpg";
 
 const Profile: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <IonPage>
       <IonHeader>
@@ -25,7 +27,7 @@ const Profile: React.FC = () => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/page/home" />
           </IonButtons>
-          <IonTitle>Profile</IonTitle>
+          <IonTitle>{t("Profile")}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
