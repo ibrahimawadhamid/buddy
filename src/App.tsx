@@ -24,7 +24,9 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 import About from "./pages/About";
+import News from "./pages/News";
 import Settings from "./pages/Settings";
 
 const App: React.FC = () => {
@@ -35,7 +37,9 @@ const App: React.FC = () => {
           <SideMenu />
           <IonRouterOutlet id="main">
             <Route path="/page/home" component={Home} exact />
+            <Route path="/page/profile" component={Profile} exact />
             <Route path="/page/about" component={About} exact />
+            <Route path="/page/news" component={News} exact />
             <Route path="/page/settings" component={Settings} exact />
             <Redirect from="/" to="/page/home" exact />
           </IonRouterOutlet>

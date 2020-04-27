@@ -7,7 +7,11 @@ import {
   IonMenuButton,
   IonTitle,
   IonContent,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from "@ionic/react";
+import LatestNews from "../../components/LatestNews";
 
 const Home: React.FC = () => {
   return (
@@ -21,7 +25,15 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent></IonContent>
+      <IonContent>
+        <IonGrid>
+          <IonRow>
+            <IonCol>
+              <LatestNews />
+            </IonCol>
+          </IonRow>
+        </IonGrid>
+      </IonContent>
     </IonPage>
   );
 };

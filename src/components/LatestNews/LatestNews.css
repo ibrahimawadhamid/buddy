@@ -1,0 +1,33 @@
+.news-slide {
+  width: 250px !important;
+  text-align: left;
+}
+
+.news-image {
+  object-fit: cover;
+  width: 250px !important;
+  border-radius: 20px !important;
+}
+
+.news-text {
+  position: absolute;
+  left: 0px;
+  border-radius: 8px;
+  background: rgba(var(--ion-color-danger-rgb), 0.85);
+  color: #fff;
+  padding: 6px;
+}
+
+.news-title {
+  top: 10px;
+  height: 30px;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.news-subtitle {
+  bottom: 10px;
+  height: 20px;
+  font-size: 15px;
+  line-height: 10px;
+}

@@ -15,9 +15,9 @@ import {
   IonLabel,
 } from "@ionic/react";
 
-import Logo from "../../assets/images/logo/icon-64.png";
+import AvatarImage from "../../assets/images/people/person-1.jpg";
 
-const About: React.FC = () => {
+const Profile: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -25,7 +25,7 @@ const About: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>About</IonTitle>
+          <IonTitle>Profile</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -33,18 +33,13 @@ const About: React.FC = () => {
         <IonGrid className="ion-margin-top">
           <IonRow>
             <IonCol>
-              <IonItem
-                button
-                target="_blank"
-                href="https://github.com/ibrahimawadhamid/buddy"
-              >
+              <IonItem button>
                 <IonAvatar slot="start" className="user-thumbnail">
-                  <img src={Logo} alt="logo" />
+                  <img src={AvatarImage} alt="profile" />
                 </IonAvatar>
                 <IonLabel>
-                  <h1>Buddy</h1>
-                  <p>Ionic and React starter app</p>
-                  <p>Version: 0.1.0</p>
+                  <h1>Ibrahim Awad</h1>
+                  <p>Sr. Software Engineer</p>
                 </IonLabel>
               </IonItem>
             </IonCol>
@@ -55,4 +50,4 @@ const About: React.FC = () => {
   );
 };
 
-export default About;
+export default Profile;

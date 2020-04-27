@@ -4,10 +4,10 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader,
   IonMenu,
   IonMenuToggle,
   IonNote,
+  IonAvatar,
 } from "@ionic/react";
 
 import React from "react";
@@ -21,6 +21,8 @@ import {
   settingsSharp,
 } from "ionicons/icons";
 import "./SideMenu.css";
+
+import AvatarImage from "../../assets/images/people/person-1.jpg";
 
 interface AppPage {
   url: string;
@@ -59,9 +61,18 @@ const Menu: React.FC = () => {
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
+        <IonItem button href="/page/profile">
+          <IonAvatar slot="start" className="user-thumbnail">
+            <img src={AvatarImage} alt="profile" />
+          </IonAvatar>
+          <IonLabel>
+            <h2>Ibrahim Awad</h2>
+            <p>Sr. Software Engineer</p>
+          </IonLabel>
+        </IonItem>
         <IonList id="core-pages-list">
-          <IonListHeader>Buddy</IonListHeader>
-          <IonNote>hello, I'm your buddy</IonNote>
+          {/* <IonListHeader>Buddy</IonListHeader>
+          <IonNote>hello, I'm your buddy</IonNote> */}
           {corePages.map((appPage, index) => {
             return (
               <IonMenuToggle key={"core-page-" + index} autoHide={false}>
