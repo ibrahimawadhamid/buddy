@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   IonPage,
   IonHeader,
@@ -10,16 +10,22 @@ import {
   IonList,
   IonItem,
   IonLabel,
-  IonCheckbox,
-  IonRadioGroup,
-  IonListHeader,
-  IonRadio,
-  IonRange,
+  IonToggle,
   IonIcon,
 } from "@ionic/react";
-import { sadOutline, happyOutline } from "ionicons/icons";
+import { moon } from "ionicons/icons";
+
+import "./Settings.css";
+import GeneralContext from "../../context/GeneralContext";
 
 const Settings: React.FC = () => {
+  const { settings, saveSettings, setDarkMode } = useContext(GeneralContext);
+
+  const toggleDarkMode = (event: CustomEvent) => {
+    saveSettings({ darkMode: event.detail.checked });
+    setDarkMode(event.detail.checked);
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -34,34 +40,18 @@ const Settings: React.FC = () => {
       <IonContent>
         <IonList className="ion-margin-top">
           <IonItem>
-            <IonLabel>This app is awesome</IonLabel>
-            <IonCheckbox checked slot="start" />
-          </IonItem>
-        </IonList>
-        <IonList>
-          <IonListHeader>How good is this?</IonListHeader>
-          <IonRadioGroup value="good" className="ion-margin-top">
-            <IonItem>
-              <IonLabel>Good</IonLabel>
-              <IonRadio slot="start" value="good" color="warning" />
-            </IonItem>
-            <IonItem>
-              <IonLabel>Awesome</IonLabel>
-              <IonRadio slot="start" value="awesome" color="primary" />
-            </IonItem>
-            <IonItem>
-              <IonLabel>Amazing</IonLabel>
-              <IonRadio slot="start" value="amazing" color="success" />
-            </IonItem>
-          </IonRadioGroup>
-        </IonList>
-        <IonList>
-          <IonListHeader>Adjust happiness</IonListHeader>
-          <IonItem>
-            <IonRange value={50} color="danger">
-              <IonIcon slot="start" icon={sadOutline} />
-              <IonIcon slot="end" icon={happyOutline} />
-            </IonRange>
+            <IonIcon
+              slot="start"
+              icon={moon}
+              className="component-icon component-icon-dark"
+            />
+            <IonLabel>Dark mode</IonLabel>
+            <IonToggle
+              slot="end"
+              name="darkMode"
+              checked={settings.darkMode}
+              onIonChange={toggleDarkMode}
+            />
           </IonItem>
         </IonList>
       </IonContent>

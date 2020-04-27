@@ -1,17 +1,25 @@
 import React from "react";
 
 export interface Settings {
-  useDarkMode: boolean;
+  darkMode: boolean;
 }
 
 interface Context {
   settings: Settings;
   initializeContext: () => void;
+  saveSettings: (updatedSettings: Settings) => void;
+  setDarkMode: (darkMode: boolean) => void;
 }
 
+export const defaultSettings: Settings = {
+  darkMode: false,
+};
+
 const GeneralContext = React.createContext<Context>({
-  settings: { useDarkMode: false },
+  settings: defaultSettings,
   initializeContext: () => {},
+  saveSettings: () => {},
+  setDarkMode: () => {},
 });
 
 export default GeneralContext;
