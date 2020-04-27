@@ -1,5 +1,5 @@
 import SideMenu from "./components/SideMenu";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { IonApp, IonRouterOutlet, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { Redirect, Route } from "react-router-dom";
@@ -23,6 +23,7 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
+import GeneralContext from "./context/GeneralContext";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
@@ -30,6 +31,12 @@ import News from "./pages/News";
 import Settings from "./pages/Settings";
 
 const App: React.FC = () => {
+  const { initializeContext } = useContext(GeneralContext);
+
+  useEffect(() => {
+    initializeContext();
+  }, [initializeContext]);
+
   return (
     <IonApp>
       <IonReactRouter>
