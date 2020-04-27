@@ -4,7 +4,6 @@ import {
   IonHeader,
   IonToolbar,
   IonButtons,
-  IonMenuButton,
   IonTitle,
   IonContent,
   IonGrid,
@@ -13,6 +12,7 @@ import {
   IonItem,
   IonAvatar,
   IonLabel,
+  IonBackButton,
 } from "@ionic/react";
 
 import AvatarImage from "../../assets/images/people/person-1.jpg";
@@ -23,7 +23,7 @@ const Profile: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonMenuButton />
+            <IonBackButton defaultHref="/page/home" />
           </IonButtons>
           <IonTitle>Profile</IonTitle>
         </IonToolbar>
