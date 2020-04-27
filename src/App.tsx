@@ -1,6 +1,11 @@
 import SideMenu from "./components/SideMenu";
-import React, { useContext, useEffect } from "react";
-import { IonApp, IonRouterOutlet, IonSplitPane } from "@ionic/react";
+import React, { useContext, useEffect, Suspense } from "react";
+import {
+  IonApp,
+  IonRouterOutlet,
+  IonSplitPane,
+  IonSpinner,
+} from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { Redirect, Route } from "react-router-dom";
 
@@ -24,11 +29,12 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 import GeneralContext from "./context/GeneralContext";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import About from "./pages/About";
-import News from "./pages/News";
-import Settings from "./pages/Settings";
+
+const Home = React.lazy(() => import("./pages/Home"));
+const Profile = React.lazy(() => import("./pages/Profile"));
+const About = React.lazy(() => import("./pages/About"));
+const News = React.lazy(() => import("./pages/News"));
+const Settings = React.lazy(() => import("./pages/Settings"));
 
 const App: React.FC = () => {
   const { initializeContext } = useContext(GeneralContext);
@@ -40,17 +46,19 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <SideMenu />
-          <IonRouterOutlet id="main">
-            <Route path="/page/home" component={Home} exact />
-            <Route path="/page/profile" component={Profile} exact />
-            <Route path="/page/about" component={About} exact />
-            <Route path="/page/news" component={News} exact />
-            <Route path="/page/settings" component={Settings} exact />
-            <Redirect from="/" to="/page/home" exact />
-          </IonRouterOutlet>
-        </IonSplitPane>
+        <Suspense fallback={<IonSpinner />}>
+          <IonSplitPane contentId="main">
+            <SideMenu />
+            <IonRouterOutlet id="main">
+              <Route path="/page/home" component={Home} exact />
+              <Route path="/page/profile" component={Profile} exact />
+              <Route path="/page/about" component={About} exact />
+              <Route path="/page/news" component={News} exact />
+              <Route path="/page/settings" component={Settings} exact />
+              <Redirect from="/" to="/page/home" exact />
+            </IonRouterOutlet>
+          </IonSplitPane>
+        </Suspense>
       </IonReactRouter>
     </IonApp>
   );
