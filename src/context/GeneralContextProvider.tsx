@@ -33,7 +33,7 @@ const GeneralContextProvider: React.FC = (props) => {
     setLanguage(storedSettings.language);
   }, []);
 
-  const setDarkMode = (darkMode: boolean) => {
+  const setDarkMode = (darkMode: boolean = false) => {
     document.body.classList.toggle("dark", darkMode);
     const updatedSettings = { darkMode: darkMode };
     setSettings((currentSettings) => {
@@ -41,7 +41,7 @@ const GeneralContextProvider: React.FC = (props) => {
     });
   };
 
-  const setLanguage = (language: availableLanguages) => {
+  const setLanguage = (language: availableLanguages = "en") => {
     i18n.changeLanguage(language);
     const languageDirection = i18n.dir(language);
     const updatedSettings = { language: language, languageDirection };
