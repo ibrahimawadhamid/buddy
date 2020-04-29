@@ -25,6 +25,14 @@
   "ُE-mail": "البريد الإلكتروني",
   "Bio": "السيرة الذاتية",
   "First name, Last name, and Date of Birth Cannot be empty": "لا يمكن وضع الأسم الأول ، الأسم الأخير ، أو تاريخ الميلاد بدون قيمة",
+  "Register": "التسجيل",
+  "Password": "كلمة المرور",
+  "Sign Up": "التسجيل",
+  "Please enter valid data": "من فضلك ادخل بيانات صحيحة",
+  "Please wait...": "الرجاء الانتظار",
+  "Or": "أو",
+  "Sign In with Google": "التسجيل عن طريق جوجل",
+  "Login / Register": "تسجيل الدخول",
   "English": "English",
   "Arabic": "العربية"
 }

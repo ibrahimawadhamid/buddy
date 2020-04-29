@@ -5,10 +5,13 @@ import * as serviceWorker from "./serviceWorker";
 
 import "./i18n";
 import GeneralContextProvider from "./context/GeneralContextProvider";
+import AuthenticationContextProvider from "./context/AuthenticationContextProvider";
 
 ReactDOM.render(
   <GeneralContextProvider>
-    <App />
+    <AuthenticationContextProvider>
+      <App />
+    </AuthenticationContextProvider>
   </GeneralContextProvider>,
   document.getElementById("root")
 );

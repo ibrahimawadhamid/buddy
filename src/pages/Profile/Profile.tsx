@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import {
   IonPage,
   IonHeader,
@@ -23,7 +23,8 @@ import { camera, cloudUpload } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 
 import "./Profile.css";
-import AvatarImage from "../../assets/images/people/person-1.jpg";
+import AvatarImage from "../../assets/images/people/avatar.svg";
+import AuthenticationContext from "../../context/AuthenticationContext";
 
 const profileInformation = {
   firstname: "Ibrahim",
@@ -39,11 +40,11 @@ const profileInformation = {
 
 const Profile: React.FC = () => {
   const { t } = useTranslation();
+  const { user } = useContext(AuthenticationContext);
   const [isProfileModified, setIsProfileModified] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const firstNameRef = useRef<HTMLIonInputElement>(null);
-  const lastNameRef = useRef<HTMLIonInputElement>(null);
+  const displayNameRef = useRef<HTMLIonInputElement>(null);
   const dateOfBirthRef = useRef<HTMLIonDatetimeElement>(null);
   const jobTitleRef = useRef<HTMLIonInputElement>(null);
   const telephoneRef = useRef<HTMLIonInputElement>(null);
@@ -53,30 +54,19 @@ const Profile: React.FC = () => {
 
   const inputFieldChangedHandler = (event: CustomEvent) => {
     setIsProfileModified(true);
-    console.log(event);
   };
 
   const saveProfileInfoHandler = () => {
-    const enteredFirstName = firstNameRef.current!.value;
-    const enteredLastName = lastNameRef.current!.value;
+    const displayName = displayNameRef.current!.value;
     const enteredDateOfBirth = dateOfBirthRef.current!.value;
-    const enteredJobTitle = jobTitleRef.current!.value;
-    const enteredTelephone = telephoneRef.current!.value;
-    const enteredAddress_1 = address_1Ref.current!.value;
-    const enteredAddress_2 = address_2Ref.current!.value;
-    const enteredBio = bioRef.current!.value;
 
     if (
-      !enteredFirstName ||
-      !enteredLastName ||
+      !displayName ||
       !enteredDateOfBirth ||
-      enteredFirstName.toString().trim().length === 0 ||
-      enteredLastName.toString().trim().length === 0 ||
+      displayName.toString().trim().length === 0 ||
       enteredDateOfBirth.trim().length === 0
     ) {
-      setErrorMessage(
-        t("First name, Last name, and Date of Birth Cannot be empty")
-      );
+      setErrorMessage(t("Display name, and Date of Birth Cannot be empty"));
       return;
     }
     setErrorMessage("");
@@ -89,7 +79,7 @@ const Profile: React.FC = () => {
         onDidDismiss={() => setErrorMessage("")}
         header={t("Error")}
         message={errorMessage}
-        buttons={[t("Ok")]}
+        buttons={[]}
       />
       <IonHeader>
         <IonToolbar>
@@ -114,7 +104,7 @@ const Profile: React.FC = () => {
             <IonCol className="ion-text-center">
               <img
                 className="profile-picture"
-                src={AvatarImage}
+                src={user ? user?.photoURL?.toString() : AvatarImage}
                 alt="profile"
               />
             </IonCol>
@@ -138,26 +128,11 @@ const Profile: React.FC = () => {
               className="ion-padding-start ion-padding-end"
             >
               <IonItem>
-                <IonLabel position="floating">{t("First name")}</IonLabel>
+                <IonLabel position="floating">{t("Display name")}</IonLabel>
                 <IonInput
-                  ref={firstNameRef}
+                  ref={displayNameRef}
                   type="text"
-                  value={profileInformation.firstname}
-                  onIonChange={inputFieldChangedHandler}
-                />
-              </IonItem>
-            </IonCol>
-            <IonCol
-              sizeXs="12"
-              sizeMd="6"
-              className="ion-padding-start ion-padding-end"
-            >
-              <IonItem>
-                <IonLabel position="floating">{t("Last name")}</IonLabel>
-                <IonInput
-                  ref={lastNameRef}
-                  type="text"
-                  value={profileInformation.lastname}
+                  value={user?.displayName}
                   onIonChange={inputFieldChangedHandler}
                 />
               </IonItem>
@@ -169,11 +144,7 @@ const Profile: React.FC = () => {
             >
               <IonItem>
                 <IonLabel position="floating">{t("ُE-mail")}</IonLabel>
-                <IonInput
-                  disabled
-                  type="text"
-                  value={profileInformation.email}
-                />
+                <IonInput disabled type="text" value={user?.email} />
               </IonItem>
             </IonCol>
             <IonCol

@@ -9,6 +9,7 @@ import {
   IonMenuToggle,
   IonNote,
   IonAvatar,
+  IonButton,
 } from "@ionic/react";
 import { useLocation } from "react-router-dom";
 import {
@@ -18,12 +19,16 @@ import {
   informationCircleSharp,
   settings,
   settingsSharp,
+  logOut,
 } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 
 import GeneralContext from "../../context/GeneralContext";
+import AuthenticationContext from "../../context/AuthenticationContext";
 import "./SideMenu.css";
-import AvatarImage from "../../assets/images/people/person-1.jpg";
+import AvatarImage from "../../assets/images/people/avatar.svg";
+
+import { fireBaseAuth } from "../../firebase";
 
 interface AppPage {
   url: string;
@@ -59,6 +64,7 @@ const extraPages: AppPage[] = [
 const Menu: React.FC = () => {
   const { t } = useTranslation();
   const { settings } = useContext(GeneralContext);
+  const { user } = useContext(AuthenticationContext);
   const location = useLocation();
 
   const menuOpenSide = settings.languageDirection === "ltr" ? "start" : "end";
@@ -66,14 +72,21 @@ const Menu: React.FC = () => {
   return (
     <IonMenu contentId="main" type="overlay" side={menuOpenSide}>
       <IonContent>
-        <IonItem button href="/page/profile">
+        <IonItem button href="/page/profile" className="ion-margin-top">
           <IonAvatar slot="start" className="user-thumbnail">
-            <img src={AvatarImage} alt="profile" />
+            <img
+              src={user ? user?.photoURL?.toString() : AvatarImage}
+              alt="profile"
+            />
           </IonAvatar>
-          <IonLabel>
-            <h2>Ibrahim Awad</h2>
-            <p>Sr. Software Engineer</p>
-          </IonLabel>
+          {user && (
+            <IonLabel>
+              <h1>{user?.displayName}</h1>
+            </IonLabel>
+          )}
+          {!user && (
+            <IonLabel color="primary">{t("Login / Register")}</IonLabel>
+          )}
         </IonItem>
         <IonList id="core-pages-list">
           {corePages.map((appPage, index) => {
@@ -115,6 +128,16 @@ const Menu: React.FC = () => {
             );
           })}
         </IonList>
+        <IonButton
+          fill="outline"
+          expand="block"
+          onClick={() => {
+            fireBaseAuth.signOut();
+          }}
+        >
+          <IonIcon slot="start" icon={logOut} />
+          Log out
+        </IonButton>
       </IonContent>
       <IonNote className="ion-margin-start">{t("version") + ": 0.1.0"}</IonNote>
     </IonMenu>

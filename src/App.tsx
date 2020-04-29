@@ -29,15 +29,19 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 import GeneralContext from "./context/GeneralContext";
+import AuthenticationContext from "./context/AuthenticationContext";
+import PrivateRoute from "./components/PrivateRoute";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Profile = React.lazy(() => import("./pages/Profile"));
 const About = React.lazy(() => import("./pages/About"));
 const News = React.lazy(() => import("./pages/News"));
 const Settings = React.lazy(() => import("./pages/Settings"));
+const Register = React.lazy(() => import("./pages/Register"));
 
 const App: React.FC = () => {
   const { initializeContext, settings } = useContext(GeneralContext);
+  const { user } = useContext(AuthenticationContext);
 
   useEffect(() => {
     initializeContext();
@@ -51,10 +55,16 @@ const App: React.FC = () => {
             <SideMenu />
             <IonRouterOutlet id="main">
               <Route path="/page/home" component={Home} exact />
-              <Route path="/page/profile" component={Profile} exact />
               <Route path="/page/about" component={About} exact />
               <Route path="/page/news" component={News} exact />
               <Route path="/page/settings" component={Settings} exact />
+              <Route path="/page/register" component={Register} exact />
+              <PrivateRoute
+                path="/page/profile"
+                component={Profile}
+                exact
+                condition={!!user}
+              />
               <Redirect from="/" to="/page/home" exact />
             </IonRouterOutlet>
           </IonSplitPane>
