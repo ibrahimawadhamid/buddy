@@ -26,21 +26,9 @@ import "./Profile.css";
 import AvatarImage from "../../assets/images/people/avatar.svg";
 import AuthenticationContext from "../../context/AuthenticationContext";
 
-const profileInformation = {
-  firstname: "Ibrahim",
-  lastname: "Awad",
-  email: "ibrahim.a.hamid@gmail.com",
-  dateOfBirth: "1991-11-16",
-  jobTitle: "Sr. Software Engineer",
-  telephone: "+20123456789",
-  address_1: "Egypt, Cairo, Pyramids",
-  address_2: "Egypt, New Valley",
-  bio: "A small bio about the person",
-};
-
 const Profile: React.FC = () => {
   const { t } = useTranslation();
-  const { user } = useContext(AuthenticationContext);
+  const { currentUser } = useContext(AuthenticationContext);
   const [isProfileModified, setIsProfileModified] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -104,7 +92,9 @@ const Profile: React.FC = () => {
             <IonCol className="ion-text-center">
               <img
                 className="profile-picture"
-                src={user ? user?.photoURL?.toString() : AvatarImage}
+                src={
+                  currentUser ? currentUser.picture?.toString() : AvatarImage
+                }
                 alt="profile"
               />
             </IonCol>
@@ -132,7 +122,7 @@ const Profile: React.FC = () => {
                 <IonInput
                   ref={displayNameRef}
                   type="text"
-                  value={user?.displayName}
+                  value={currentUser?.displayName}
                   onIonChange={inputFieldChangedHandler}
                 />
               </IonItem>
@@ -144,7 +134,7 @@ const Profile: React.FC = () => {
             >
               <IonItem>
                 <IonLabel position="floating">{t("ُE-mail")}</IonLabel>
-                <IonInput disabled type="text" value={user?.email} />
+                <IonInput disabled type="text" value={currentUser?.email} />
               </IonItem>
             </IonCol>
             <IonCol
@@ -158,7 +148,7 @@ const Profile: React.FC = () => {
                   ref={dateOfBirthRef}
                   cancelText={t("Cancel")}
                   doneText={t("Ok")}
-                  value={profileInformation.dateOfBirth}
+                  value={currentUser?.dateOfBirth?.toString()}
                   displayFormat="DD-MMM-YYYY"
                   onIonChange={inputFieldChangedHandler}
                 />
@@ -174,7 +164,7 @@ const Profile: React.FC = () => {
                 <IonInput
                   ref={jobTitleRef}
                   type="text"
-                  value={profileInformation.jobTitle}
+                  value={currentUser?.jobTitle}
                   onIonChange={inputFieldChangedHandler}
                 />
               </IonItem>
@@ -190,7 +180,7 @@ const Profile: React.FC = () => {
                   ref={telephoneRef}
                   type="tel"
                   inputMode="tel"
-                  value={profileInformation.telephone}
+                  value={currentUser?.telephone}
                   onIonChange={inputFieldChangedHandler}
                 />
               </IonItem>
@@ -206,7 +196,7 @@ const Profile: React.FC = () => {
                   ref={address_1Ref}
                   type="text"
                   inputMode="text"
-                  value={profileInformation.address_1}
+                  value={currentUser?.address_1}
                   onIonChange={inputFieldChangedHandler}
                 />
               </IonItem>
@@ -222,7 +212,7 @@ const Profile: React.FC = () => {
                   ref={address_2Ref}
                   type="text"
                   inputMode="text"
-                  value={profileInformation.address_2}
+                  value={currentUser?.address_2}
                   onIonChange={inputFieldChangedHandler}
                 />
               </IonItem>
@@ -232,7 +222,7 @@ const Profile: React.FC = () => {
                 <IonLabel position="floating">{t("Bio")}</IonLabel>
                 <IonTextarea
                   ref={bioRef}
-                  value={profileInformation.bio}
+                  value={currentUser?.bio}
                   onIonChange={inputFieldChangedHandler}
                 />
               </IonItem>

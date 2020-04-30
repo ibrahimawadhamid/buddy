@@ -16,7 +16,8 @@ import {
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 
-import Logo from "../../assets/images/logo/icon-64.png";
+import packageJson from "../../../package.json";
+import Logo from "../../assets/images/logo/icon-512.png";
 
 const About: React.FC = () => {
   const { t } = useTranslation();
@@ -46,7 +47,7 @@ const About: React.FC = () => {
                 <IonLabel>
                   <h1>Buddy</h1>
                   <p>Ionic and React starter app</p>
-                  <p>version: 0.1.0</p>
+                  <p>{t("version") + ": " + packageJson.version}</p>
                 </IonLabel>
               </IonItem>
             </IonCol>

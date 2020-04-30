@@ -1,7 +1,7 @@
 {
   "name": "buddy",
   "description": "Ionic and React starter app",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "private": true,
   "author": "Ibrahim Awad <ibrahim.a.hamidw@gmail.com> (https://www.linkedin.com/in/ibrahimhamid/)",
   "license": "MIT",
@@ -25,7 +25,6 @@
     "@types/react-leaflet": "^2.5.1",
     "@types/react-router": "^5.1.4",
     "@types/react-router-dom": "^5.1.3",
-    "firebase": "^7.14.2",
     "i18next": "^19.4.4",
     "i18next-browser-languagedetector": "^4.1.1",
     "i18next-http-backend": "^1.0.6",

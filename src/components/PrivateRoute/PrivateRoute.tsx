@@ -10,7 +10,7 @@ const PrivateRoute: React.FC<{
   return props.condition ? (
     <Route path={props.path} exact={props.exact} component={props.component} />
   ) : (
-    <Redirect to="/page/register" />
+    <Redirect to="/page/login" />
   );
 };
 

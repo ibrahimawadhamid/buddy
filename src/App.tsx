@@ -32,16 +32,17 @@ import GeneralContext from "./context/GeneralContext";
 import AuthenticationContext from "./context/AuthenticationContext";
 import PrivateRoute from "./components/PrivateRoute";
 
-const Home = React.lazy(() => import("./pages/Home"));
-const Profile = React.lazy(() => import("./pages/Profile"));
-const About = React.lazy(() => import("./pages/About"));
-const News = React.lazy(() => import("./pages/News"));
-const Settings = React.lazy(() => import("./pages/Settings"));
-const Register = React.lazy(() => import("./pages/Register"));
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import About from "./pages/About";
+import News from "./pages/News";
+import Settings from "./pages/Settings";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 const App: React.FC = () => {
   const { initializeContext, settings } = useContext(GeneralContext);
-  const { user } = useContext(AuthenticationContext);
+  const { currentUser } = useContext(AuthenticationContext);
 
   useEffect(() => {
     initializeContext();
@@ -59,11 +60,12 @@ const App: React.FC = () => {
               <Route path="/page/news" component={News} exact />
               <Route path="/page/settings" component={Settings} exact />
               <Route path="/page/register" component={Register} exact />
+              <Route path="/page/login" component={Login} exact />
               <PrivateRoute
                 path="/page/profile"
                 component={Profile}
                 exact
-                condition={!!user}
+                condition={!!currentUser}
               />
               <Redirect from="/" to="/page/home" exact />
             </IonRouterOutlet>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1670px" height="170px" viewBox="0 0 1670 170" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0 1669.765 0 1669.765 169.762 0 169.762"></polygon>
+    </defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="wave">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Clip_2"></g>
+            <rect id="Rectangle" fill="#42b883" mask="url(#mask-2)" x="0" y="0" width="1670" height="85"></rect>
+            <g id="Group_3" mask="url(#mask-2)" fill="#42b883" fill-rule="nonzero">
+                <g transform="translate(0.000000, -1.000000)" id="Fill_1">
+                    <path d="M1669.767,139.699 C1484.237,32.069 1298.707,247.319 1113.177,139.699 C927.647,32.079 742.118,247.319 556.588,139.699 C371.058,32.079 185.53,247.315 0,139.699 L0,32.065 C185.53,-75.555 371.059,139.695 556.589,32.065 C742.119,-75.565 927.648,139.695 1113.178,32.065 C1298.708,-75.565 1484.237,139.695 1669.767,32.065 L1669.767,139.699 Z"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -19,41 +19,28 @@ import {
   IonLoading,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
-import {
-  personAdd,
-  logoGoogle,
-  logoFacebook,
-  logoGithub,
-} from "ionicons/icons";
+import { logoGoogle, person, logoFacebook, logoGithub } from "ionicons/icons";
 import { useHistory } from "react-router-dom";
 
 import AuthenticationContext from "../../context/AuthenticationContext";
 
-const Register: React.FC = () => {
+const Login: React.FC = () => {
   const { t } = useTranslation();
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [showLoading, setShowLoading] = useState<boolean>(false);
   const { loginHandler } = useContext(AuthenticationContext);
 
-  const firstNameRef = useRef<HTMLIonInputElement>(null);
-  const lastNameRef = useRef<HTMLIonInputElement>(null);
   const emailRef = useRef<HTMLIonInputElement>(null);
   const passwordRef = useRef<HTMLIonInputElement>(null);
 
   const signUpWithEmailAndPasswordHandler = () => {
-    const enteredFirstName = firstNameRef.current!.value;
-    const enteredLastName = lastNameRef.current!.value;
     const enteredEmail = emailRef.current!.value;
     const enteredPassword = passwordRef.current!.value;
 
     if (
-      !enteredFirstName ||
-      !enteredLastName ||
       !enteredEmail ||
       !enteredPassword ||
-      enteredFirstName.toString().trim().length === 0 ||
-      enteredLastName.toString().trim().length === 0 ||
       enteredEmail.toString().trim().length === 0 ||
       enteredPassword.toString().trim().length === 0
     ) {
@@ -89,33 +76,13 @@ const Register: React.FC = () => {
         <IonToolbar>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/page/home" />
-            <IonTitle>{t("Register")}</IonTitle>
+            <IonTitle>{t("Login")}</IonTitle>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonGrid>
           <IonRow>
-            <IonCol
-              sizeXs="12"
-              sizeMd="6"
-              className="ion-padding-start ion-padding-end"
-            >
-              <IonItem>
-                <IonLabel position="floating">{t("First name")}</IonLabel>
-                <IonInput ref={firstNameRef} type="text" />
-              </IonItem>
-            </IonCol>
-            <IonCol
-              sizeXs="12"
-              sizeMd="6"
-              className="ion-padding-start ion-padding-end"
-            >
-              <IonItem>
-                <IonLabel position="floating">{t("Last name")}</IonLabel>
-                <IonInput ref={lastNameRef} type="text" />
-              </IonItem>
-            </IonCol>
             <IonCol
               sizeXs="12"
               sizeMd="6"
@@ -140,8 +107,8 @@ const Register: React.FC = () => {
           <IonRow className="ion-margin-top">
             <IonCol className="ion-text-center">
               <IonButton onClick={signUpWithEmailAndPasswordHandler}>
-                <IonIcon slot="start" icon={personAdd} />
-                {t("Sign Up")}
+                <IonIcon slot="start" icon={person} />
+                {t("Login")}
               </IonButton>
             </IonCol>
           </IonRow>
@@ -169,10 +136,20 @@ const Register: React.FC = () => {
               </IonButton>
             </IonCol>
           </IonRow>
+          <IonRow>
+            <IonCol sizeXs="12" className="ion-text-center ion-margin-top">
+              <IonLabel>{t("If you don't have an account yet")}</IonLabel>
+            </IonCol>
+            <IonCol sizeXs="12" className="ion-text-center">
+              <IonButton href="/page/register" fill="clear">
+                {t("Register Now")}
+              </IonButton>
+            </IonCol>
+          </IonRow>
         </IonGrid>
       </IonContent>
     </IonPage>
   );
 };
 
-export default Register;
+export default Login;

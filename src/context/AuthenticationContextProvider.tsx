@@ -1,17 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-import { fireBaseAuth } from "../firebase";
-import AuthenticationContext from "./AuthenticationContext";
+import AuthenticationContext, {
+  SystemUser,
+  dummyUser,
+} from "./AuthenticationContext";
 
 const AuthenticationContextProvider: React.FC = (props) => {
-  const [user, setUser] = useState<firebase.User | null>(null);
+  const [currentUser, setCurrentUser] = useState<SystemUser | null>(null);
 
-  useEffect(() => {
-    fireBaseAuth.onAuthStateChanged((userAuth) => setUser(userAuth));
-  }, []);
+  const loginHandler = () => {
+    setCurrentUser(dummyUser);
+  };
+
+  const logoutHandler = () => {
+    setCurrentUser(null);
+  };
 
   return (
-    <AuthenticationContext.Provider value={{ user }}>
+    <AuthenticationContext.Provider
+      value={{ currentUser, loginHandler, logoutHandler }}
+    >
       {props.children}
     </AuthenticationContext.Provider>
   );

@@ -1,1 +1,8 @@
-{}
+{
+  "appId": "com.awad.buddy",
+  "appName": "Buddy",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {}
+}

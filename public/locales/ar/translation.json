@@ -26,6 +26,7 @@
   "Bio": "السيرة الذاتية",
   "First name, Last name, and Date of Birth Cannot be empty": "لا يمكن وضع الأسم الأول ، الأسم الأخير ، أو تاريخ الميلاد بدون قيمة",
   "Register": "التسجيل",
+  "Login": "الدخول",
   "Password": "كلمة المرور",
   "Sign Up": "التسجيل",
   "Please enter valid data": "من فضلك ادخل بيانات صحيحة",
@@ -33,6 +34,8 @@
   "Or": "أو",
   "Sign In with Google": "التسجيل عن طريق جوجل",
   "Login / Register": "تسجيل الدخول",
+  "If you don't have an account yet": "إذا كنت لا تمتلك حسابا حتى الآن",
+  "Register Now": "قم بالتسجيل",
   "English": "English",
   "Arabic": "العربية"
 }

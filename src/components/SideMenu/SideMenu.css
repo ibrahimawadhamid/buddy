@@ -2,15 +2,15 @@ ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }
 
-ion-menu.md ion-content {
+/* ion-menu.md ion-content {
   --padding-start: 8px;
   --padding-end: 8px;
   --padding-top: 20px;
   --padding-bottom: 20px;
-}
+} */
 
 ion-menu.md ion-list {
-  padding: 20px 0;
+  padding: 20px 10px;
 }
 
 ion-menu.md ion-note {
@@ -113,7 +113,19 @@ ion-item.selected {
   --color: var(--ion-color-primary);
 }
 
+.border-bottom {
+  border-bottom: 1px solid;
+}
+
 .user-thumbnail {
   width: 90px;
   height: 90px;
+}
+
+.border-rectangle {
+  border-radius: 30px;
+}
+
+.font-size-20 {
+  font-size: 20px;
 }

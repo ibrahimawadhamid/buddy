@@ -26,13 +26,16 @@
   "Bio": "Bio",
   "First name, Last name, and Date of Birth Cannot be empty": "First name, Last name, and Date of Birth Cannot be empty",
   "Register": "Register",
+  "Login": "Login",
   "Password": "Password",
   "Sign Up": "Sign Up",
   "Please enter valid data": "Please enter valid data",
   "Please wait...": "Please wait...",
   "Or": "Or",
-  "Sign In with Google": "Sign Up with Google",
+  "Sign In with Google": "Sign In with Google",
   "Login / Register": "Login / Register",
+  "If you don't have an account yet": "If you don't have an account yet",
+  "Register Now": "Register Now",
   "English": "English",
   "Arabic": "العربية"
 }
