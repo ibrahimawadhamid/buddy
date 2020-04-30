@@ -10,7 +10,9 @@
     "url": "git@github.com/ibrahimawadhamid/buddy.git"
   },
   "dependencies": {
+    "@capacitor/android": "^2.0.1",
     "@capacitor/core": "2.0.1",
+    "@capacitor/ios": "^2.0.1",
     "@ionic/react": "^5.0.7",
     "@ionic/react-router": "^5.0.7",
     "@testing-library/jest-dom": "^4.2.4",
@@ -43,7 +45,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "firebase deploy"
+    "deploy": "firebase deploy",
+    "resources": "capacitor-resources -p android,ios"
   },
   "eslintConfig": {
     "extends": "react-app"
