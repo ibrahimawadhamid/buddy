@@ -1,36 +1,36 @@
 import React, { useState, useRef, useContext } from "react";
 import {
   IonPage,
-  IonHeader,
-  IonToolbar,
-  IonButtons,
-  IonTitle,
   IonContent,
   IonGrid,
   IonRow,
   IonCol,
   IonItem,
   IonLabel,
-  IonBackButton,
   IonButton,
   IonIcon,
   IonInput,
   IonDatetime,
   IonTextarea,
   IonAlert,
+  IonLoading,
 } from "@ionic/react";
-import { camera, cloudUpload } from "ionicons/icons";
+import { camera, cloudUpload, trash } from "ionicons/icons";
+import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import "./Profile.css";
 import AvatarImage from "../../assets/images/people/avatar.svg";
 import AuthenticationContext from "../../context/AuthenticationContext";
+import PageHeader from "../../components/PageHeader";
 
 const Profile: React.FC = () => {
   const { t } = useTranslation();
+  const history = useHistory();
   const { currentUser } = useContext(AuthenticationContext);
   const [isProfileModified, setIsProfileModified] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [showLoading, setShowLoading] = useState<boolean>(false);
 
   const displayNameRef = useRef<HTMLIonInputElement>(null);
   const dateOfBirthRef = useRef<HTMLIonDatetimeElement>(null);
@@ -58,6 +58,12 @@ const Profile: React.FC = () => {
       return;
     }
     setErrorMessage("");
+    finishSaveProfile();
+  };
+
+  const finishSaveProfile = () => {
+    setShowLoading(false);
+    history.replace("/");
   };
 
   return (
@@ -69,24 +75,14 @@ const Profile: React.FC = () => {
         message={errorMessage}
         buttons={[]}
       />
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/page/home" />
-          </IonButtons>
-          <IonTitle>{t("Profile")}</IonTitle>
-          <IonButtons slot="end">
-            <IonButton
-              disabled={!isProfileModified}
-              onClick={saveProfileInfoHandler}
-            >
-              {t("Save")}
-            </IonButton>
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
-
+      <IonLoading
+        isOpen={showLoading}
+        onDidDismiss={finishSaveProfile}
+        message={"Please wait..."}
+        duration={2000}
+      />
       <IonContent>
+        <PageHeader title={t("Profile")} />
         <IonGrid className="ion-margin-top">
           <IonRow>
             <IonCol className="ion-text-center">
@@ -226,6 +222,26 @@ const Profile: React.FC = () => {
                   onIonChange={inputFieldChangedHandler}
                 />
               </IonItem>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol className="ion-text-center">
+              <IonButton
+                disabled={!isProfileModified}
+                onClick={saveProfileInfoHandler}
+              >
+                {t("Save")}
+              </IonButton>
+              <IonButton
+                color="danger"
+                fill="outline"
+                className="ion-margin-start"
+                disabled={!isProfileModified}
+                onClick={() => history.goBack()}
+              >
+                <IonIcon icon={trash} slot="start" />
+                {t("Discard")}
+              </IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>

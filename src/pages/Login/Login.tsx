@@ -1,11 +1,7 @@
 import React, { useRef, useState, useContext } from "react";
 import {
   IonPage,
-  IonHeader,
   IonContent,
-  IonToolbar,
-  IonButtons,
-  IonBackButton,
   IonTitle,
   IonGrid,
   IonRow,
@@ -19,10 +15,17 @@ import {
   IonLoading,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
-import { logoGoogle, person, logoFacebook, logoGithub } from "ionicons/icons";
+import {
+  logoGoogle,
+  person,
+  logoFacebook,
+  logoGithub,
+  home,
+} from "ionicons/icons";
 import { useHistory } from "react-router-dom";
 
 import AuthenticationContext from "../../context/AuthenticationContext";
+import "./Login.css";
 
 const Login: React.FC = () => {
   const { t } = useTranslation();
@@ -72,16 +75,11 @@ const Login: React.FC = () => {
         message={"Please wait..."}
         duration={2000}
       />
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/page/home" />
-            <IonTitle>{t("Login")}</IonTitle>
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
       <IonContent>
-        <IonGrid>
+        <IonGrid className="margin-top-10 ion-padding">
+          <IonTitle className="font-size-30" size="large" color="primary">
+            {t("Welcome Back")}
+          </IonTitle>
           <IonRow>
             <IonCol
               sizeXs="12"
@@ -105,8 +103,11 @@ const Login: React.FC = () => {
             </IonCol>
           </IonRow>
           <IonRow className="ion-margin-top">
-            <IonCol className="ion-text-center">
-              <IonButton onClick={signUpWithEmailAndPasswordHandler}>
+            <IonCol offset="3" size="6" className="ion-text-center">
+              <IonButton
+                expand="block"
+                onClick={signUpWithEmailAndPasswordHandler}
+              >
                 <IonIcon slot="start" icon={person} />
                 {t("Login")}
               </IonButton>
@@ -143,6 +144,14 @@ const Login: React.FC = () => {
             <IonCol sizeXs="12" className="ion-text-center">
               <IonButton href="/page/register" fill="clear">
                 {t("Register Now")}
+              </IonButton>
+            </IonCol>
+          </IonRow>
+          <IonRow className="ion-margin-top">
+            <IonCol offset="3" size="6" className="ion-text-center">
+              <IonButton fill="outline" onClick={() => history.replace("/")}>
+                <IonIcon slot="start" icon={home} />
+                {t("Back to Home")}
               </IonButton>
             </IonCol>
           </IonRow>

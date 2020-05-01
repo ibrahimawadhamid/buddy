@@ -1,17 +1,9 @@
 import React from "react";
-import {
-  IonPage,
-  IonButtons,
-  IonMenuButton,
-  IonContent,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonLabel,
-} from "@ionic/react";
+import { IonPage, IonContent, IonGrid, IonRow, IonCol } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import LatestNews from "../../components/LatestNews";
 import "./Home.css";
+import PageHeader from "../../components/PageHeader";
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
@@ -19,14 +11,7 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <div className="fake-header">
-          <IonButtons slot="start">
-            <IonMenuButton color="light" />
-            <IonLabel className="main-title ion-margin-start">
-              {t("Home")}
-            </IonLabel>
-          </IonButtons>
-        </div>
+        <PageHeader title={t("Home")} />
         <IonGrid>
           <IonRow>
             <IonCol>

@@ -95,15 +95,15 @@ const Menu: React.FC = () => {
               </IonRouterLink>
             </IonCol>
           </IonRow>
-          {currentUser && (
-            <IonRow className="ion-margin-bottom">
-              <IonCol>
+          <IonRow className="ion-margin-bottom">
+            <IonCol>
+              {currentUser && (
                 <IonLabel className="font-size-20">
                   {currentUser?.displayName}
                 </IonLabel>
-              </IonCol>
-            </IonRow>
-          )}
+              )}
+            </IonCol>
+          </IonRow>
         </IonGrid>
         <IonList id="core-pages-list">
           {!currentUser && (

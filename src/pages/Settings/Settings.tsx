@@ -1,11 +1,6 @@
 import React, { useContext } from "react";
 import {
   IonPage,
-  IonHeader,
-  IonToolbar,
-  IonButtons,
-  IonMenuButton,
-  IonTitle,
   IonContent,
   IonList,
   IonItem,
@@ -20,6 +15,7 @@ import { useTranslation } from "react-i18next";
 
 import "./Settings.css";
 import GeneralContext from "../../context/GeneralContext";
+import PageHeader from "../../components/PageHeader";
 
 const Settings: React.FC = () => {
   const { t } = useTranslation();
@@ -35,16 +31,8 @@ const Settings: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>{t("Settings")}</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-
       <IonContent>
+        <PageHeader title={t("Settings")} />
         <IonList className="ion-margin-top">
           <IonItem>
             <IonIcon

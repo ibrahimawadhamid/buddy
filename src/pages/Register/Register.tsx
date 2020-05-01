@@ -1,11 +1,7 @@
 import React, { useRef, useState, useContext } from "react";
 import {
   IonPage,
-  IonHeader,
   IonContent,
-  IonToolbar,
-  IonButtons,
-  IonBackButton,
   IonTitle,
   IonGrid,
   IonRow,
@@ -24,6 +20,7 @@ import {
   logoGoogle,
   logoFacebook,
   logoGithub,
+  home,
 } from "ionicons/icons";
 import { useHistory } from "react-router-dom";
 
@@ -85,16 +82,11 @@ const Register: React.FC = () => {
         message={"Please wait..."}
         duration={2000}
       />
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/page/home" />
-            <IonTitle>{t("Register")}</IonTitle>
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
       <IonContent>
-        <IonGrid>
+        <IonGrid className="margin-top-10 ion-padding">
+          <IonTitle className="font-size-30" size="large" color="primary">
+            {t("Register")}
+          </IonTitle>
           <IonRow>
             <IonCol
               sizeXs="12"
@@ -138,7 +130,7 @@ const Register: React.FC = () => {
             </IonCol>
           </IonRow>
           <IonRow className="ion-margin-top">
-            <IonCol className="ion-text-center">
+            <IonCol offset="3" size="6" className="ion-text-center">
               <IonButton onClick={signUpWithEmailAndPasswordHandler}>
                 <IonIcon slot="start" icon={personAdd} />
                 {t("Sign Up")}
@@ -166,6 +158,18 @@ const Register: React.FC = () => {
                 onClick={signUpWithEmailAndPasswordHandler}
               >
                 <IonIcon slot="icon-only" icon={logoGithub} />
+              </IonButton>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol
+              offset="3"
+              size="6"
+              className="ion-text-center ion-margin-top"
+            >
+              <IonButton fill="outline" onClick={() => history.replace("/")}>
+                <IonIcon slot="start" icon={home} />
+                {t("Back to Home")}
               </IonButton>
             </IonCol>
           </IonRow>

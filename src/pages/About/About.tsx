@@ -1,11 +1,6 @@
 import React from "react";
 import {
   IonPage,
-  IonHeader,
-  IonToolbar,
-  IonButtons,
-  IonMenuButton,
-  IonTitle,
   IonContent,
   IonGrid,
   IonRow,
@@ -18,21 +13,14 @@ import { useTranslation } from "react-i18next";
 
 import packageJson from "../../../package.json";
 import Logo from "../../assets/images/logo/icon-512.png";
+import PageHeader from "../../components/PageHeader/PageHeader";
 
 const About: React.FC = () => {
   const { t } = useTranslation();
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>{t("About")}</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-
       <IonContent>
+        <PageHeader title={t("About")} />
         <IonGrid className="ion-margin-top">
           <IonRow>
             <IonCol>

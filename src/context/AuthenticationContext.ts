@@ -19,7 +19,7 @@ export const dummyUser: SystemUser = {
   email: "ibrahim.a.hamid@gmail.com",
   picture: ProfilePicture,
   jobTitle: "Sr. Software Engineer",
-  dateOfBirth: new Date("16-11-1991"),
+  dateOfBirth: new Date("1991-11-16"),
   telephone: "+20123456789",
   address_1: "Egypt, Cairo, Pyramids",
   address_2: "Egypt, New Valley",
