@@ -4,7 +4,6 @@
   background-repeat: no-repeat;
   padding-top: 10px;
   padding-bottom: 60px;
-  animation: waves 100s ease infinite;
 }
 
 .main-title {
@@ -12,16 +11,4 @@
   font-size: 27px;
   letter-spacing: -0.03em;
   color: #fff;
-}
-
-@keyframes waves {
-  0% {
-    background-position: 0% 80%;
-  }
-  50% {
-    background-position: 100% 80%;
-  }
-  100% {
-    background-position: 0% 80%;
-  }
 }
