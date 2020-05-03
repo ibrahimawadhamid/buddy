@@ -82,7 +82,11 @@ const Profile: React.FC = () => {
         duration={2000}
       />
       <IonContent>
-        <PageHeader title={t("Profile")} />
+        <PageHeader
+          title={t("Profile")}
+          backButtonEnabled={true}
+          menuButtonEnabled={false}
+        />
         <IonGrid className="ion-margin-top">
           <IonRow>
             <IonCol className="ion-text-center">

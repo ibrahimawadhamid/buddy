@@ -1,12 +1,7 @@
 import React from "react";
 import {
   IonPage,
-  IonHeader,
-  IonToolbar,
-  IonButtons,
-  IonTitle,
   IonContent,
-  IonBackButton,
   IonGrid,
   IonRow,
   IonCol,
@@ -17,6 +12,7 @@ import {
   IonCardContent,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
+import PageHeader from "../../components/PageHeader";
 
 import SampleImage1 from "../../assets/images/samples/sample-1.jpg";
 import SampleImage2 from "../../assets/images/samples/sample-2.jpg";
@@ -46,16 +42,12 @@ const News: React.FC = () => {
   ];
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/page/home" />
-          </IonButtons>
-          <IonTitle>{t("News")}</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-
       <IonContent>
+        <PageHeader
+          title={t("News")}
+          backButtonEnabled={true}
+          menuButtonEnabled={false}
+        />
         <IonGrid>
           <IonRow>
             {currentNews.map((singleNews) => {

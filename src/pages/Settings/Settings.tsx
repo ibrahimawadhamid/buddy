@@ -32,7 +32,11 @@ const Settings: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <PageHeader title={t("Settings")} />
+        <PageHeader
+          title={t("Settings")}
+          backButtonEnabled={false}
+          menuButtonEnabled={true}
+        />
         <IonList className="ion-margin-top">
           <IonItem>
             <IonIcon

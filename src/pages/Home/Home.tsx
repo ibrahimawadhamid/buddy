@@ -11,7 +11,11 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <PageHeader title={t("Home")} />
+        <PageHeader
+          title={t("Home")}
+          backButtonEnabled={false}
+          menuButtonEnabled={true}
+        />
         <IonGrid>
           <IonRow>
             <IonCol>

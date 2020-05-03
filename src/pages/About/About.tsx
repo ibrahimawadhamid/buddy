@@ -20,7 +20,11 @@ const About: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <PageHeader title={t("About")} />
+        <PageHeader
+          title={t("About")}
+          backButtonEnabled={false}
+          menuButtonEnabled={true}
+        />
         <IonGrid className="ion-margin-top">
           <IonRow>
             <IonCol>
