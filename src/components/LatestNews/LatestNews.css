@@ -13,7 +13,7 @@
   position: absolute;
   left: 0px;
   border-radius: 8px;
-  background: rgba(var(--ion-color-danger-rgb), 0.85);
+  background: rgba(var(--ion-color-tertiary-rgb), 0.85);
   color: #fff;
   padding: 6px;
 }

@@ -8,6 +8,7 @@ import {
   IonLabel,
   IonButton,
   IonItem,
+  IonTitle,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 
@@ -50,9 +51,17 @@ const LatestNews: React.FC = () => {
     <IonGrid>
       <IonRow>
         <IonCol>
-          <IonItem>
-            <IonLabel slot="start">{t("Latest News")}</IonLabel>
-            <IonButton slot="end" fill="outline" size="small" href="/page/news">
+          <IonItem href="/page/news" button>
+            <IonTitle slot="start" color="tertiary" className="ion-no-padding">
+              {t("Latest News")}
+            </IonTitle>
+            <IonButton
+              slot="end"
+              fill="outline"
+              size="small"
+              color="tertiary"
+              className="ion-no-margin"
+            >
               {t("More")}
             </IonButton>
           </IonItem>
