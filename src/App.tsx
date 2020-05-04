@@ -33,6 +33,7 @@ import AuthenticationContext from "./context/AuthenticationContext";
 import PrivateRoute from "./components/PrivateRoute";
 
 import Home from "./pages/Home";
+import MapPage from "./pages/MapPage";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
 import News from "./pages/News";
@@ -56,6 +57,7 @@ const App: React.FC = () => {
             <SideMenu />
             <IonRouterOutlet id="main">
               <Route path="/page/home" component={Home} exact />
+              <Route path="/page/map" component={MapPage} exact />
               <Route path="/page/about" component={About} exact />
               <Route path="/page/news" component={News} exact />
               <Route path="/page/settings" component={Settings} exact />
