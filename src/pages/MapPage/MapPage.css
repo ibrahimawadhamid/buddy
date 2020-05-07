@@ -5,3 +5,13 @@
   height: 90vh;
   width: 100%;
 }
+
+.marker-modal {
+  --border-radius: 15px;
+  --max-height: 320px;
+  --max-width: 90%;
+}
+
+.marker-modal-header {
+  font-size: 16px;
+}
