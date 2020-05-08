@@ -10,6 +10,7 @@ import {
   IonMenuButton,
   IonTitle,
   IonToolbar,
+  IonBadge,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import L from "leaflet";
@@ -71,9 +72,14 @@ const Locations: React.FC = () => {
       <IonPage>
         <IonHeader>
           <IonToolbar color="success" className="locations-header">
-            <IonButtons>
-              <IonMenuButton slot="start" />
-              <IonTitle>{t("Locations")}</IonTitle>
+            <IonButtons slot="start">
+              <IonMenuButton />
+            </IonButtons>
+            <IonTitle>{t("Locations")}</IonTitle>
+            <IonButtons slot="primary">
+              <IonBadge color="danger" className="ion-margin-end">
+                500
+              </IonBadge>
             </IonButtons>
           </IonToolbar>
         </IonHeader>
