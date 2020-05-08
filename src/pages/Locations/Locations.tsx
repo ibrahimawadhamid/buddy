@@ -36,10 +36,13 @@ const Locations: React.FC = () => {
       center: [25, 30],
       zoom: 4,
       layers: [
-        L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
-          attribution:
-            '&copy; <a target="_blank" href="https://buddy-ionic.web.app">Buddy</a>',
-        }),
+        L.tileLayer(
+          "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png",
+          {
+            attribution:
+              '&copy; <a target="_blank" href="https://buddy-ionic.web.app">Buddy</a>',
+          }
+        ),
       ],
     });
     setLeafletMap(currentMap);
