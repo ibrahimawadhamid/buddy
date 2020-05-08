@@ -23,11 +23,16 @@ import { getDefaultMarker } from "../../util";
 
 import "./Locations.css";
 import MarkerPopup from "../../components/MarkerPopup";
+import BasemapModal from "../../components/BasemapModal";
+import BasemapSwitcher from "../../MapControls/BasemapSwitcher";
 
 const Locations: React.FC = () => {
   const { t } = useTranslation();
   const [leafletMap, setLeafletMap] = useState<L.Map>();
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [showMarkerModal, setShowMarkerModal] = useState<boolean>(false);
+  const [showBasemapSwitcherModal, setShowBasemapSwitcherModal] = useState<
+    boolean
+  >(false);
 
   /**
    * Run only the first time this component loads
@@ -46,6 +51,11 @@ const Locations: React.FC = () => {
         ),
       ],
     });
+    currentMap.addControl(
+      new BasemapSwitcher(setShowBasemapSwitcherModal, {
+        position: "bottomleft",
+      })
+    );
     setLeafletMap(currentMap);
     setTimeout(function () {
       window.dispatchEvent(new Event("resize"));
@@ -59,7 +69,7 @@ const Locations: React.FC = () => {
       setTimeout(function () {
         for (let i = 0; i < 500; i++) {
           const marker = getDefaultMarker(leafletMap);
-          marker.on("click", () => setShowModal(true));
+          marker.on("click", () => setShowMarkerModal(true));
           markers.addLayer(marker);
         }
       }, 1000);
@@ -68,7 +78,11 @@ const Locations: React.FC = () => {
 
   return (
     <React.Fragment>
-      <MarkerPopup show={showModal} setShow={setShowModal} />
+      <MarkerPopup show={showMarkerModal} setShow={setShowMarkerModal} />
+      <BasemapModal
+        show={showBasemapSwitcherModal}
+        setShow={setShowBasemapSwitcherModal}
+      />
       <IonPage>
         <IonHeader>
           <IonToolbar color="success" className="locations-header">

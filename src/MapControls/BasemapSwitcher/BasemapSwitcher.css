@@ -1,0 +1,7 @@
+.basemap-switcher-control {
+  width: 80px;
+  padding: 2px;
+  border: 1px solid var(--ion-color-success);
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px #999;
+}
