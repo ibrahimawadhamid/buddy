@@ -50,21 +50,21 @@ const LatestNews: React.FC = () => {
   return (
     <IonGrid>
       <IonRow>
-        <IonCol>
-          <IonItem href="/page/news" button>
-            <IonTitle slot="start" color="tertiary" className="ion-no-padding">
-              {t("Latest News")}
-            </IonTitle>
-            <IonButton
-              slot="end"
-              fill="outline"
-              size="small"
-              color="tertiary"
-              className="ion-no-margin"
-            >
-              {t("More")}
-            </IonButton>
-          </IonItem>
+        <IonCol className="ion-text-left">
+          <IonTitle color="tertiary" className="ion-no-padding">
+            {t("Latest News")}
+          </IonTitle>
+        </IonCol>
+        <IonCol className="ion-text-right">
+          <IonButton
+            fill="outline"
+            size="small"
+            color="tertiary"
+            className="ion-no-margin"
+            href="/page/news"
+          >
+            {t("More")}
+          </IonButton>
         </IonCol>
       </IonRow>
       <IonRow>

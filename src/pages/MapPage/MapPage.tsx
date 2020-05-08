@@ -66,7 +66,7 @@ const MapPage: React.FC = () => {
       shadowUrl: MarkerShadow,
     });
     if (leafletMap) {
-      const marker = L.marker([34, 30], { icon: defaultIcon }).addTo(
+      const marker = L.marker([32, 30], { icon: defaultIcon }).addTo(
         leafletMap
       );
       marker.on("click", () => setShowModal(true));
@@ -85,28 +85,28 @@ const MapPage: React.FC = () => {
           <IonListHeader lines="full">
             <IonTitle className="marker-modal-header">Awesome Marker</IonTitle>
           </IonListHeader>
-          <IonItem lines="full">
+          <IonItem lines="full" button>
             <IonIcon slot="start" color="primary" icon={people} />
             <IonLabel>Followers</IonLabel>
             <IonBadge color="primary" slot="end">
               22K
             </IonBadge>
           </IonItem>
-          <IonItem lines="full">
+          <IonItem lines="full" button>
             <IonIcon slot="start" color="success" icon={checkbox} />
             <IonLabel>Completed</IonLabel>
             <IonBadge color="success" slot="end">
               800
             </IonBadge>
           </IonItem>
-          <IonItem lines="full">
+          <IonItem lines="full" button>
             <IonIcon slot="start" color="warning" icon={information} />
             <IonLabel>Warnings</IonLabel>
             <IonBadge color="warning" slot="end">
               150
             </IonBadge>
           </IonItem>
-          <IonItem lines="full">
+          <IonItem lines="full" button>
             <IonIcon slot="start" color="danger" icon={warning} />
             <IonLabel>Notifications</IonLabel>
             <IonBadge color="danger" slot="end">

@@ -53,21 +53,20 @@ const TopEmployees: React.FC = () => {
   return (
     <IonGrid>
       <IonRow>
-        <IonCol>
-          <IonItem button>
-            <IonTitle slot="start" color="tertiary" className="ion-no-padding">
-              {t("Top Employees")}
-            </IonTitle>
-            <IonButton
-              slot="end"
-              fill="outline"
-              size="small"
-              color="tertiary"
-              className="ion-no-margin"
-            >
-              {t("More")}
-            </IonButton>
-          </IonItem>
+        <IonCol className="ion-text-left">
+          <IonTitle color="tertiary" className="ion-no-padding">
+            {t("Top Employees")}
+          </IonTitle>
+        </IonCol>
+        <IonCol className="ion-text-right">
+          <IonButton
+            fill="outline"
+            size="small"
+            color="tertiary"
+            className="ion-no-margin"
+          >
+            {t("More")}
+          </IonButton>
         </IonCol>
       </IonRow>
       <IonRow>
