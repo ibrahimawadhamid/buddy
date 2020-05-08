@@ -7,7 +7,6 @@ import {
   IonCol,
   IonLabel,
   IonButton,
-  IonItem,
   IonTitle,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
