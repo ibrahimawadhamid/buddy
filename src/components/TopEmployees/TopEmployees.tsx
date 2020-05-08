@@ -5,7 +5,6 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-  IonButton,
   IonTitle,
   IonCard,
   IonCardHeader,
@@ -56,16 +55,6 @@ const TopEmployees: React.FC = () => {
           <IonTitle color="tertiary" className="ion-no-padding">
             {t("Top Employees")}
           </IonTitle>
-        </IonCol>
-        <IonCol className="ion-text-right">
-          <IonButton
-            fill="outline"
-            size="small"
-            color="tertiary"
-            className="ion-no-margin"
-          >
-            {t("More")}
-          </IonButton>
         </IonCol>
       </IonRow>
       <IonRow>
