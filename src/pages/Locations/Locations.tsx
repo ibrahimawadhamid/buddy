@@ -20,10 +20,10 @@ import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
 import { getDefaultMarker } from "../../util";
 
-import "./MapPage.css";
+import "./Locations.css";
 import MarkerPopup from "../../components/MarkerPopup";
 
-const MapPage: React.FC = () => {
+const Locations: React.FC = () => {
   const { t } = useTranslation();
   const [leafletMap, setLeafletMap] = useState<L.Map>();
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -32,7 +32,7 @@ const MapPage: React.FC = () => {
    * Run only the first time this component loads
    */
   useEffect(() => {
-    const currentMap = L.map("mapDiv", {
+    const currentMap = L.map("locationsDiv", {
       center: [25, 30],
       zoom: 4,
       layers: [
@@ -67,10 +67,10 @@ const MapPage: React.FC = () => {
       <MarkerPopup show={showModal} setShow={setShowModal} />
       <IonPage>
         <IonHeader>
-          <IonToolbar color="success" className="map-page-header">
+          <IonToolbar color="success" className="locations-header">
             <IonButtons>
               <IonMenuButton slot="start" />
-              <IonTitle>{t("Map")}</IonTitle>
+              <IonTitle>{t("Locations")}</IonTitle>
             </IonButtons>
           </IonToolbar>
         </IonHeader>
@@ -78,7 +78,7 @@ const MapPage: React.FC = () => {
           <IonGrid className="ion-no-padding">
             <IonRow>
               <IonCol>
-                <div id="mapDiv"></div>
+                <div id="locationsDiv"></div>
               </IonCol>
             </IonRow>
           </IonGrid>
@@ -88,4 +88,4 @@ const MapPage: React.FC = () => {
   );
 };
 
-export default MapPage;
+export default Locations;

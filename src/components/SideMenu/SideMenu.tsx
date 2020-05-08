@@ -24,8 +24,8 @@ import {
   settingsSharp,
   logOut,
   logIn,
-  globe,
-  globeSharp,
+  location,
+  locationSharp,
 } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 
@@ -52,10 +52,10 @@ const corePages: AppPage[] = [
     mdIcon: homeSharp,
   },
   {
-    title: "Map",
-    url: "/page/map",
-    iosIcon: globe,
-    mdIcon: globeSharp,
+    title: "Locations",
+    url: "/page/locations",
+    iosIcon: location,
+    mdIcon: locationSharp,
   },
   {
     title: "About",

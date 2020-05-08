@@ -1,7 +1,7 @@
-.map-page-header {
+.locations-header {
   background: var(--ion-color-success);
 }
-#mapDiv {
+#locationsDiv {
   height: 90vh;
   width: 100%;
 }
