@@ -98,13 +98,7 @@ const Locations: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <IonGrid className="ion-no-padding">
-            <IonRow>
-              <IonCol>
-                <div id="locationsDiv"></div>
-              </IonCol>
-            </IonRow>
-          </IonGrid>
+          <div id="locationsDiv"></div>
         </IonContent>
       </IonPage>
     </React.Fragment>
