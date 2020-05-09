@@ -2,15 +2,13 @@ import React, { useEffect, useState } from "react";
 import {
   IonPage,
   IonContent,
-  IonGrid,
-  IonRow,
-  IonCol,
   IonHeader,
   IonButtons,
   IonMenuButton,
   IonTitle,
   IonToolbar,
   IonBadge,
+  IonSearchbar,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import L from "leaflet";
@@ -33,6 +31,7 @@ const Locations: React.FC = () => {
   const [showBasemapSwitcherModal, setShowBasemapSwitcherModal] = useState<
     boolean
   >(false);
+  const [searchText, setSearchText] = useState("");
 
   /**
    * Run only the first time this component loads
@@ -98,6 +97,13 @@ const Locations: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonContent>
+          <div className="locations-search-area">
+            <IonSearchbar
+              className="locations-search-bar"
+              value={searchText}
+              onIonChange={(e) => setSearchText(e.detail.value!)}
+            ></IonSearchbar>
+          </div>
           <div id="locationsDiv"></div>
         </IonContent>
       </IonPage>

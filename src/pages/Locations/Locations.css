@@ -5,3 +5,18 @@
   height: 100%;
   width: 100%;
 }
+.locations-search-area {
+  position: absolute;
+  width: 100%;
+  z-index: 2000;
+}
+ion-searchbar input {
+  border-radius: 5px !important;
+}
+.locations-search-bar {
+  position: relative;
+}
+
+.leaflet-top {
+  margin-top: 50px;
+}
