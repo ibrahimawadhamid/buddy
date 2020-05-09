@@ -1,7 +1,7 @@
 import L from "leaflet";
 
 import "./BasemapSwitcher.css";
-import BasemapImage from "../../assets/images/map-controls/Basemap.png";
+import BasemapImage from "../../assets/images/map-controls/BasemapSwitcher.png";
 
 class BasemapSwitcher extends L.Control {
   showControlOptions: (show: boolean) => void;
@@ -20,7 +20,6 @@ class BasemapSwitcher extends L.Control {
       "basemap-switcher-control"
     ) as HTMLImageElement;
     img.src = BasemapImage;
-    img.style.width = "64px";
     L.DomEvent.on(img, "click", L.DomEvent.stopPropagation);
     L.DomEvent.on(img, "click", () => this.showControlOptions(true));
     return img;

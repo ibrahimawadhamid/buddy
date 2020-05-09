@@ -10,16 +10,16 @@ import {
   IonButton,
   IonThumbnail,
 } from "@ionic/react";
-import OSM from "../../assets/images/map-controls/osm.jpg";
-import Toner from "../../assets/images/map-controls/tnr.png";
-import Satellite from "../../assets/images/map-controls/satellite.png";
-
-import "./BasemapModal.css";
 import { checkbox } from "ionicons/icons";
+
+import config from "../../config";
+import "./BasemapModal.css";
 
 const BasemapModal: React.FC<{
   show: boolean;
   setShow: (show: boolean) => void;
+  selectedBasemapId: string;
+  setSelectedBasemapId: (id: string) => void;
 }> = (props) => {
   return (
     <IonModal
@@ -31,25 +31,27 @@ const BasemapModal: React.FC<{
         <IonListHeader lines="full">
           <IonTitle className="basemap-modal-header">Basemap</IonTitle>
         </IonListHeader>
-        <IonItem lines="full" button>
-          <IonThumbnail slot="start">
-            <img src={OSM} alt="OSM" />
-          </IonThumbnail>
-          <IonLabel>Open Street Map</IonLabel>
-        </IonItem>
-        <IonItem lines="full" button>
-          <IonThumbnail slot="start">
-            <img src={Toner} alt="Toner" />
-          </IonThumbnail>
-          <IonLabel>Toner Lite</IonLabel>
-          <IonIcon icon={checkbox} slot="end" color="primary" />
-        </IonItem>
-        <IonItem lines="full" button>
-          <IonThumbnail slot="start">
-            <img src={Satellite} alt="Satellite" />
-          </IonThumbnail>
-          <IonLabel>Satellite</IonLabel>
-        </IonItem>
+        {config.availableBasemaps.map((singleBasemap) => {
+          return (
+            <IonItem
+              key={"basemap-option-" + singleBasemap.id}
+              lines="inset"
+              button
+              onClick={() => {
+                props.setSelectedBasemapId(singleBasemap.id);
+                props.setShow(false);
+              }}
+            >
+              <IonThumbnail slot="start">
+                <img src={singleBasemap.image} alt={singleBasemap.id} />
+              </IonThumbnail>
+              <IonLabel>{singleBasemap.name}</IonLabel>
+              {props.selectedBasemapId === singleBasemap.id ? (
+                <IonIcon icon={checkbox} slot="end" color="primary" />
+              ) : null}
+            </IonItem>
+          );
+        })}
         <IonButton
           className="ion-margin-top ion-margin-bottom"
           onClick={() => props.setShow(false)}

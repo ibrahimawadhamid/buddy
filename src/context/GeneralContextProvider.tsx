@@ -31,9 +31,10 @@ const GeneralContextProvider: React.FC = (props) => {
     setSettings(storedSettings);
     setDarkMode(storedSettings.darkMode);
     setLanguage(storedSettings.language);
+    setDefaultBasemapId(storedSettings.defaultBasemapId);
   }, []);
 
-  const setDarkMode = (darkMode: boolean = false) => {
+  const setDarkMode = (darkMode: boolean = defaultSettings.darkMode) => {
     document.body.classList.toggle("dark", darkMode);
     const updatedSettings = { darkMode: darkMode };
     setSettings((currentSettings) => {
@@ -41,10 +42,21 @@ const GeneralContextProvider: React.FC = (props) => {
     });
   };
 
-  const setLanguage = (language: availableLanguages = "en") => {
+  const setLanguage = (
+    language: availableLanguages = defaultSettings.language
+  ) => {
     i18n.changeLanguage(language);
     const languageDirection = i18n.dir(language);
     const updatedSettings = { language: language, languageDirection };
+    setSettings((currentSettings) => {
+      return { ...currentSettings, ...updatedSettings };
+    });
+  };
+
+  const setDefaultBasemapId = (
+    defaultBasemapId: string = defaultSettings.defaultBasemapId
+  ) => {
+    const updatedSettings = { defaultBasemapId };
     setSettings((currentSettings) => {
       return { ...currentSettings, ...updatedSettings };
     });
@@ -57,6 +69,7 @@ const GeneralContextProvider: React.FC = (props) => {
         initializeContext,
         setDarkMode,
         setLanguage,
+        setDefaultBasemapId: setDefaultBasemapId,
       }}
     >
       {props.children}
