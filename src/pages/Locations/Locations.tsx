@@ -100,6 +100,7 @@ const Locations: React.FC = () => {
           <div className="locations-search-area">
             <IonSearchbar
               className="locations-search-bar"
+              mode="md"
               value={searchText}
               onIonChange={(e) => setSearchText(e.detail.value!)}
             ></IonSearchbar>
