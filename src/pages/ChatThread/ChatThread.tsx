@@ -21,7 +21,13 @@ import { useTranslation } from "react-i18next";
 
 import "./ChatThread.css";
 import ProfilePicture from "../../assets/images/people/person-5.jpg";
-import { ellipsisVertical, send, camera, grid } from "ionicons/icons";
+import {
+  ellipsisVertical,
+  send,
+  camera,
+  grid,
+  ellipsisHorizontal,
+} from "ionicons/icons";
 
 const ChatThread: React.FC = () => {
   const { t } = useTranslation();
@@ -34,7 +40,11 @@ const ChatThread: React.FC = () => {
           </IonButtons>
           <IonButtons slot="primary">
             <IonButton>
-              <IonIcon icon={ellipsisVertical} slot="icon-only" />
+              <IonIcon
+                ios={ellipsisHorizontal}
+                md={ellipsisVertical}
+                slot="icon-only"
+              />
             </IonButton>
           </IonButtons>
           <IonTitle>{t("Ibrahim Awad")}</IonTitle>
@@ -141,14 +151,20 @@ const ChatThread: React.FC = () => {
       </IonContent>
       <IonFooter className="chat-box">
         <IonItem className="chat-item">
-          <IonIcon color="primary" icon={grid} slot="start" />
-          <IonIcon color="primary" icon={camera} slot="start" />
+          <IonButton slot="start" fill="clear" className="ion-no-padding">
+            <IonIcon color="primary" icon={grid} slot="icon-only" />
+          </IonButton>
+          <IonButton slot="start" fill="clear" className="ion-no-padding">
+            <IonIcon color="primary" icon={camera} slot="icon-only" />
+          </IonButton>
           <IonInput
             type="text"
             placeholder="Aa"
             className="chat-input"
           ></IonInput>
-          <IonIcon color="primary" icon={send} slot="end" />
+          <IonButton slot="end" fill="clear" className="ion-no-padding">
+            <IonIcon color="primary" icon={send} slot="icon-only" />
+          </IonButton>
         </IonItem>
       </IonFooter>
     </IonPage>
