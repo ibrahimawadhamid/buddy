@@ -1,7 +1,7 @@
 {
   "name": "buddy",
   "description": "Ionic and React starter app",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
   "author": "Ibrahim Awad <ibrahim.a.hamidw@gmail.com> (https://www.linkedin.com/in/ibrahimhamid/)",
   "license": "MIT",
@@ -48,8 +48,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "firebase deploy",
-    "resources": "capacitor-resources -p android,ios"
+    "deploy": "firebase deploy"
   },
   "eslintConfig": {
     "extends": "react-app"

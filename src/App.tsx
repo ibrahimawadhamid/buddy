@@ -36,6 +36,8 @@ import Home from "./pages/Home";
 import Locations from "./pages/Locations";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
+import Messages from "./pages/Messages";
+import ChatThread from "./pages/ChatThread";
 import News from "./pages/News";
 import Settings from "./pages/Settings";
 import Register from "./pages/Register";
@@ -59,6 +61,8 @@ const App: React.FC = () => {
               <Route path="/page/home" component={Home} exact />
               <Route path="/page/locations" component={Locations} exact />
               <Route path="/page/about" component={About} exact />
+              <Route path="/page/messages" component={Messages} exact />
+              <Route path="/page/chat-thread" component={ChatThread} exact />
               <Route path="/page/news" component={News} exact />
               <Route path="/page/settings" component={Settings} exact />
               <Route path="/page/register" component={Register} exact />

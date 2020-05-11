@@ -26,6 +26,8 @@ import {
   logIn,
   location,
   locationSharp,
+  chatbubbles,
+  chatbubblesSharp,
 } from "ionicons/icons";
 import { useTranslation } from "react-i18next";
 
@@ -56,6 +58,12 @@ const corePages: AppPage[] = [
     url: "/page/locations",
     iosIcon: location,
     mdIcon: locationSharp,
+  },
+  {
+    title: "Messages",
+    url: "/page/messages",
+    iosIcon: chatbubbles,
+    mdIcon: chatbubblesSharp,
   },
   {
     title: "About",
