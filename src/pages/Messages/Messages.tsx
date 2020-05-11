@@ -98,7 +98,6 @@ const Messages: React.FC = () => {
         isOpen={showToast}
         onDidDismiss={() => setShowToast(false)}
         message="Everything is up to date!"
-        position="top"
         duration={2000}
       />
       <IonPage>
@@ -133,12 +132,12 @@ const Messages: React.FC = () => {
             <IonRow>
               <IonCol>
                 <IonList>
-                  {availableMessages.map((singleMessage) => {
+                  {availableMessages.map((singleMessage, index) => {
                     return (
                       <IonItem
                         lines="full"
                         className=""
-                        key={singleMessage.name}
+                        key={singleMessage.name + "-" + index}
                         button
                         href="/page/chat-thread"
                       >

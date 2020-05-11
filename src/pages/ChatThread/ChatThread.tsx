@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   IonPage,
   IonContent,
@@ -31,6 +31,22 @@ import {
 
 const ChatThread: React.FC = () => {
   const { t } = useTranslation();
+  const [dummyMessage, setDummyMessage] = useState<string>("");
+  const inputTextRef = useRef<HTMLIonInputElement>(null);
+  const contentRef = useRef<HTMLIonContentElement>(null);
+
+  const sendHandler = () => {
+    const inputMessage = inputTextRef.current!.value;
+    if (!inputMessage || inputMessage.toString().trim().length === 0) {
+      return;
+    }
+    setDummyMessage(inputMessage.toString());
+  };
+
+  useEffect(() => {
+    contentRef.current?.scrollToBottom(500);
+  }, [dummyMessage]);
+
   return (
     <IonPage>
       <IonHeader>
@@ -50,7 +66,7 @@ const ChatThread: React.FC = () => {
           <IonTitle>{t("Ibrahim Awad")}</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent ref={contentRef}>
         <IonGrid>
           <IonRow>
             <IonCol size="3">
@@ -147,6 +163,24 @@ const ChatThread: React.FC = () => {
               </div>
             </IonCol>
           </IonRow>
+          {dummyMessage && (
+            <IonRow>
+              <IonCol size="12">
+                <IonItem lines="none" className="ion-float-right">
+                  <div className="speach-bubble speach-bubble-self">
+                    <p>{dummyMessage}</p>
+                    <p className="chat-time-stamp">
+                      {new Date().toLocaleString("en-US", {
+                        hour: "numeric",
+                        minute: "numeric",
+                        hour12: true,
+                      })}
+                    </p>
+                  </div>
+                </IonItem>
+              </IonCol>
+            </IonRow>
+          )}
         </IonGrid>
       </IonContent>
       <IonFooter className="chat-box">
@@ -158,11 +192,18 @@ const ChatThread: React.FC = () => {
             <IonIcon color="primary" icon={camera} slot="icon-only" />
           </IonButton>
           <IonInput
+            // value={dummyMessage}
+            ref={inputTextRef}
             type="text"
             placeholder="Aa"
             className="chat-input"
           ></IonInput>
-          <IonButton slot="end" fill="clear" className="ion-no-padding">
+          <IonButton
+            slot="end"
+            fill="clear"
+            className="ion-no-padding"
+            onClick={sendHandler}
+          >
             <IonIcon color="primary" icon={send} slot="icon-only" />
           </IonButton>
         </IonItem>
